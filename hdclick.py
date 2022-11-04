@@ -22,7 +22,7 @@ def trr():
     click.freq(30)
     click.duty_u16(16000)
     #await asyncio.sleep_ms(5)
-    utime.sleep_ms(5)
+    utime.sleep_ms(1)
     click.duty_u16(0)
 
 
