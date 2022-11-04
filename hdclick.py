@@ -22,16 +22,37 @@ def trr():
     click.freq(30)
     click.duty_u16(16000)
     #await asyncio.sleep_ms(5)
-    utime.sleep_ms(1)
+    utime.sleep_ms(10)
     click.duty_u16(0)
 
-
+def testhd():
+    s = 0
+    print("input test")
+    while s < 5:
+        led.high()
+        print(hdsensA.read_u16())
+        print(hdsens.value())
+        s += 1
+        print(s)
+        led.low()
+        utime.sleep(1)
+    s=0
+    print("output test")
+    while s < 5:
+        led.high()
+        trr()
+        s += 1
+        print(s)
+        led.low()
+        utime.sleep(1)
+    print("test end..")
 
 #async def sens():
 click.duty_u16(0)
-print(hdsensA.read_u16())
-print(hdsensA.read_u16()* 3.3/65535)
-print(hdsens.value())
+#print(hdsensA.read_u16())
+#print(hdsensA.read_u16()* 3.3/65535)
+#print(hdsens.value())
+testhd()
 utime.sleep(2)
 while True:
     led.low()
@@ -40,5 +61,5 @@ while True:
         #trrr_worker = asyncio.create_task(trrr())
         led.high()
         trr()
-        #print("sleep...")
+        print("trrr")
     utime.sleep_ms(1)
