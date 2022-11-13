@@ -56,10 +56,18 @@ testhd()
 utime.sleep(2)
 while True:
     led.low()
-    if hdsens.value() == 1 or hdsensA.read_u16() >= 16000:
+    Dval = hdsens.value()
+    Aval = hdsensA.read_u16()
+    if Dval == 1:
         #print("trrr")
         #trrr_worker = asyncio.create_task(trrr())
         led.high()
         trr()
-        print("trrr")
+        print("Dval:", Dval)
+    elif Aval <= 1000:
+        led.high()
+        trr()
+        print("Aval:", Aval)
+    else:
+        print("No signal Dval:", Dval, "Aval:", Aval)
     utime.sleep_ms(1)
